@@ -101,7 +101,6 @@ class Serial
      */
     protected $seasons;
 
-
     /**
      * Constructor
      */
@@ -116,7 +115,7 @@ class Serial
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -126,7 +125,7 @@ class Serial
     /**
      * Set poster
      *
-     * @param string $poster
+     * @param  string $poster
      * @return Serial
      */
     public function setPoster($poster)
@@ -139,7 +138,7 @@ class Serial
     /**
      * Get poster
      *
-     * @return string 
+     * @return string
      */
     public function getPoster()
     {
@@ -149,7 +148,7 @@ class Serial
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string $slug
      * @return Serial
      */
     public function setSlug($slug)
@@ -162,7 +161,7 @@ class Serial
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -172,7 +171,7 @@ class Serial
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Serial
      */
     public function setName($name)
@@ -185,7 +184,7 @@ class Serial
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -195,7 +194,7 @@ class Serial
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string $description
      * @return Serial
      */
     public function setDescription($description)
@@ -208,7 +207,7 @@ class Serial
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -218,7 +217,7 @@ class Serial
     /**
      * Set releasedAt
      *
-     * @param \DateTime $releasedAt
+     * @param  \DateTime $releasedAt
      * @return Serial
      */
     public function setReleasedAt($releasedAt)
@@ -231,7 +230,7 @@ class Serial
     /**
      * Get releasedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getReleasedAt()
     {
@@ -241,7 +240,7 @@ class Serial
     /**
      * Set country
      *
-     * @param string $country
+     * @param  string $country
      * @return Serial
      */
     public function setCountry($country)
@@ -254,7 +253,7 @@ class Serial
     /**
      * Get country
      *
-     * @return string 
+     * @return string
      */
     public function getCountry()
     {
@@ -264,7 +263,7 @@ class Serial
     /**
      * Set city
      *
-     * @param string $city
+     * @param  string $city
      * @return Serial
      */
     public function setCity($city)
@@ -277,7 +276,7 @@ class Serial
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -287,12 +286,13 @@ class Serial
     /**
      * Add actors
      *
-     * @param \AppBundle\Entity\People $actors
+     * @param  \AppBundle\Entity\People $actors
      * @return Serial
      */
     public function addActor(\AppBundle\Entity\People $actors)
     {
         $this->actors[] = $actors;
+        $actors->addActorSerial($this);
 
         return $this;
     }
@@ -305,12 +305,13 @@ class Serial
     public function removeActor(\AppBundle\Entity\People $actors)
     {
         $this->actors->removeElement($actors);
+        $actors->removeActorSerial($this);
     }
 
     /**
      * Get actors
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getActors()
     {
@@ -320,12 +321,13 @@ class Serial
     /**
      * Add directors
      *
-     * @param \AppBundle\Entity\People $directors
+     * @param  \AppBundle\Entity\People $directors
      * @return Serial
      */
     public function addDirector(\AppBundle\Entity\People $directors)
     {
         $this->directors[] = $directors;
+        $directors->addDirectorSerial($this);
 
         return $this;
     }
@@ -338,12 +340,13 @@ class Serial
     public function removeDirector(\AppBundle\Entity\People $directors)
     {
         $this->directors->removeElement($directors);
+        $directors->removeDirectorSerial($this);
     }
 
     /**
      * Get directors
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDirectors()
     {
@@ -353,12 +356,13 @@ class Serial
     /**
      * Add genres
      *
-     * @param \AppBundle\Entity\Genre $genres
+     * @param  \AppBundle\Entity\Genre $genres
      * @return Serial
      */
     public function addGenre(\AppBundle\Entity\Genre $genres)
     {
         $this->genres[] = $genres;
+        $genres->addSerial($this);
 
         return $this;
     }
@@ -371,12 +375,13 @@ class Serial
     public function removeGenre(\AppBundle\Entity\Genre $genres)
     {
         $this->genres->removeElement($genres);
+        $genres->removeSerial($this);
     }
 
     /**
      * Get genres
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getGenres()
     {
@@ -386,7 +391,7 @@ class Serial
     /**
      * Add seasons
      *
-     * @param \AppBundle\Entity\Season $seasons
+     * @param  \AppBundle\Entity\Season $seasons
      * @return Serial
      */
     public function addSeason(\AppBundle\Entity\Season $seasons)
@@ -409,7 +414,7 @@ class Serial
     /**
      * Get seasons
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSeasons()
     {

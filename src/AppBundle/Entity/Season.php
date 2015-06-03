@@ -64,7 +64,7 @@ class Season
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -74,7 +74,7 @@ class Season
     /**
      * Set number
      *
-     * @param integer $number
+     * @param  integer $number
      * @return Season
      */
     public function setNumber($number)
@@ -87,7 +87,7 @@ class Season
     /**
      * Get number
      *
-     * @return integer 
+     * @return integer
      */
     public function getNumber()
     {
@@ -97,7 +97,7 @@ class Season
     /**
      * Set date_start
      *
-     * @param \DateTime $dateStart
+     * @param  \DateTime $dateStart
      * @return Season
      */
     public function setDateStart($dateStart)
@@ -110,7 +110,7 @@ class Season
     /**
      * Get date_start
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateStart()
     {
@@ -120,7 +120,7 @@ class Season
     /**
      * Set date_end
      *
-     * @param \DateTime $dateEnd
+     * @param  \DateTime $dateEnd
      * @return Season
      */
     public function setDateEnd($dateEnd)
@@ -133,7 +133,7 @@ class Season
     /**
      * Get date_end
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateEnd()
     {
@@ -143,7 +143,7 @@ class Season
     /**
      * Set serial
      *
-     * @param \AppBundle\Entity\Serial $serial
+     * @param  \AppBundle\Entity\Serial $serial
      * @return Season
      */
     public function setSerial(\AppBundle\Entity\Serial $serial = null)
@@ -156,7 +156,7 @@ class Season
     /**
      * Get serial
      *
-     * @return \AppBundle\Entity\Serial 
+     * @return \AppBundle\Entity\Serial
      */
     public function getSerial()
     {
@@ -166,7 +166,7 @@ class Season
     /**
      * Add episodes
      *
-     * @param \AppBundle\Entity\Episode $episodes
+     * @param  \AppBundle\Entity\Episode $episodes
      * @return Season
      */
     public function addEpisode(\AppBundle\Entity\Episode $episodes)
@@ -189,7 +189,7 @@ class Season
     /**
      * Get episodes
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEpisodes()
     {

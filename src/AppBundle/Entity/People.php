@@ -73,7 +73,7 @@ class People
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -83,7 +83,7 @@ class People
     /**
      * Set surname
      *
-     * @param string $surname
+     * @param  string $surname
      * @return People
      */
     public function setSurname($surname)
@@ -96,7 +96,7 @@ class People
     /**
      * Get surname
      *
-     * @return string 
+     * @return string
      */
     public function getSurname()
     {
@@ -106,7 +106,7 @@ class People
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return People
      */
     public function setName($name)
@@ -119,7 +119,7 @@ class People
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -129,7 +129,7 @@ class People
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string $slug
      * @return People
      */
     public function setSlug($slug)
@@ -142,7 +142,7 @@ class People
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -152,7 +152,7 @@ class People
     /**
      * Set birthday
      *
-     * @param \DateTime $birthday
+     * @param  \DateTime $birthday
      * @return People
      */
     public function setBirthday($birthday)
@@ -165,7 +165,7 @@ class People
     /**
      * Get birthday
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthday()
     {
@@ -175,7 +175,7 @@ class People
     /**
      * Add director_serials
      *
-     * @param \AppBundle\Entity\Serial $directorSerials
+     * @param  \AppBundle\Entity\Serial $directorSerials
      * @return People
      */
     public function addDirectorSerial(\AppBundle\Entity\Serial $directorSerials)
@@ -198,7 +198,7 @@ class People
     /**
      * Get director_serials
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getDirectorSerials()
     {
@@ -208,7 +208,7 @@ class People
     /**
      * Add actor_serials
      *
-     * @param \AppBundle\Entity\Serial $actorSerials
+     * @param  \AppBundle\Entity\Serial $actorSerials
      * @return People
      */
     public function addActorSerial(\AppBundle\Entity\Serial $actorSerials)
@@ -231,7 +231,7 @@ class People
     /**
      * Get actor_serials
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getActorSerials()
     {
