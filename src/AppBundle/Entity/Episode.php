@@ -44,7 +44,7 @@ class Episode
     protected $description;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="integer")
      */
     protected $time;
 
@@ -60,10 +60,11 @@ class Episode
      */
     protected $season;
 
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -73,7 +74,7 @@ class Episode
     /**
      * Set name
      *
-     * @param  string  $name
+     * @param string $name
      * @return Episode
      */
     public function setName($name)
@@ -86,7 +87,7 @@ class Episode
     /**
      * Get name
      *
-     * @return string
+     * @return string 
      */
     public function getName()
     {
@@ -96,7 +97,7 @@ class Episode
     /**
      * Set poster
      *
-     * @param  string  $poster
+     * @param string $poster
      * @return Episode
      */
     public function setPoster($poster)
@@ -109,7 +110,7 @@ class Episode
     /**
      * Get poster
      *
-     * @return string
+     * @return string 
      */
     public function getPoster()
     {
@@ -119,7 +120,7 @@ class Episode
     /**
      * Set description
      *
-     * @param  string  $description
+     * @param string $description
      * @return Episode
      */
     public function setDescription($description)
@@ -132,7 +133,7 @@ class Episode
     /**
      * Get description
      *
-     * @return string
+     * @return string 
      */
     public function getDescription()
     {
@@ -142,7 +143,7 @@ class Episode
     /**
      * Set time
      *
-     * @param  \DateTime $time
+     * @param \DateTime $time
      * @return Episode
      */
     public function setTime($time)
@@ -155,7 +156,7 @@ class Episode
     /**
      * Get time
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getTime()
     {
@@ -165,7 +166,7 @@ class Episode
     /**
      * Set releasedAt
      *
-     * @param  \DateTime $releasedAt
+     * @param \DateTime $releasedAt
      * @return Episode
      */
     public function setReleasedAt($releasedAt)
@@ -178,7 +179,7 @@ class Episode
     /**
      * Get releasedAt
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getReleasedAt()
     {
@@ -188,7 +189,7 @@ class Episode
     /**
      * Set season
      *
-     * @param  \AppBundle\Entity\Season $season
+     * @param \AppBundle\Entity\Season $season
      * @return Episode
      */
     public function setSeason(\AppBundle\Entity\Season $season = null)
@@ -201,7 +202,7 @@ class Episode
     /**
      * Get season
      *
-     * @return \AppBundle\Entity\Season
+     * @return \AppBundle\Entity\Season 
      */
     public function getSeason()
     {
