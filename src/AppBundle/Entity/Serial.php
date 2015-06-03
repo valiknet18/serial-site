@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Serial
@@ -28,6 +29,14 @@ class Serial
      * @ORM\Column(type="string")
      */
     protected $poster;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string")
+     */
+    protected $slug;
 
     /**
      * @var string

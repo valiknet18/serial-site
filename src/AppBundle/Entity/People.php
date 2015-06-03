@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Actor
@@ -33,6 +34,14 @@ class People
      * @ORM\Column(type="string")
      */
     protected $name;
+
+    /**
+     * @var strin
+     *
+     * @ORM\Column(type="string")
+     * @Gedmo\Slug(fields={"surname", "name"})
+     */
+    protected $slug;
 
     /**
      * @ORM\Column(type="date")

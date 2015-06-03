@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Genre
@@ -30,9 +31,18 @@ class Genre
     protected $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     * @Gedmo\Slug(fields={"name"})
+     */
+    protected $slug;
+
+    /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Serial", inversedBy="genres")
      */
     protected $serials;
+
     /**
      * Constructor
      */
