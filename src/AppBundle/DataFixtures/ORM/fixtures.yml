@@ -20,7 +20,7 @@ AppBundle\Entity\Serial:
     directors: 3x @peoples*
 
 AppBundle\Entity\Season:
-  seasons{1.40}:
+  seasons{1..60}:
     number: <randomDigit()>
     date_start: <dateTimeBetween('-6 month', 'now')>
     date_end: <dateTimeBetween('now', '+6 month')>
@@ -33,3 +33,4 @@ AppBundle\Entity\Episode:
     description: <text()>
     time: 42
     releasedAt: <dateTimeBetween('-30 years', 'now')>
+    season: @seasons*
