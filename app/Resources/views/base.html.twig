@@ -3,11 +3,34 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link href="{{ asset('/bundles/app/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('/bundles/app/css/style.css') }}" rel="stylesheet"/>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <span class="navbar-brand">
+                        Serials
+                    </span>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">
+                            <div>
+                                Home
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            {% block body %}{% endblock %}
+        </div>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
