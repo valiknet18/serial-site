@@ -28,12 +28,14 @@ class SerialsController extends Controller
      *
      * @Template
      */
-    public function viewAction($slug)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
         $serial = $em->getRepository('AppBundle:Serial')->findOneBySlug($slug);
 
-        return $serial;
+        return [
+            'serial' => $serial
+        ];
     }
 }

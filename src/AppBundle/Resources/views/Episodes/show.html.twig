@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12 thumbnail">
+                <div class="col-sm-4">
+                    <img src="{{ episode.poster }}" />
+                </div>
+
+                <div class="col-sm-8">
+                    <div class="col-sm-12">
+                        <b>Name episode:</b> {{ episode.name }}
+                    </div>
+
+                    <div class="col-sm-12">
+                        <b>Duration:</b> {{ episode.time }}
+                    </div>
+
+                    <div class="col-sm-12">
+                        <b>Released at:</b> {{ episode.releasedAt|date('d-m-Y') }}
+                    </div>
+
+                    <p class="col-sm-12">
+                        <b>Description:</b> {{ episode.description }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    Episode "{{ episode.name }}" from {{ episode.season.number }} season of serial "{{ episode.season.serial.name }}"
+{% endblock %}

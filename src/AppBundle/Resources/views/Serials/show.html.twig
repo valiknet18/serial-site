@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <article class="col-sm-12 thumbnail">
+                <div class="col-sm-4">
+                    <img src="{{ serial.poster }}" />
+                </div>
+
+                <div class="col-xs-12 col-sm-8">
+                    <ul class="list-group">
+                        <li class="list-group-item"><h3>{{ serial.name }}</h3></li>
+                        <li class="list-group-item"><b>Year:</b> {{ serial.releasedAt|date('d-m-Y') }} </li>
+                        <li class="list-group-item"><b>Country:</b> {{ serial.country }} </li>
+                        <li class="list-group-item"><b>City:</b> {{ serial.city }}</li>
+                        <li class="list-group-item"><b>Genres:</b> {% for genre in serial.genres %}<a href="" class="badge badge-info">{{ genre.name }}</a> {% endfor %}</li>
+                        <li class="list-group-item"><b>Directors:</b> {% for director in serial.directors %} <a href="" class="badge badge-info">{{ director.surname }} {{ director.name }}</a> {% endfor %}</li>
+                        <li class="list-group-item"><b>Actors:</b>{% for actor in serial.actors %}<a href="" class="badge badge-info">{{ actor.surname }} {{ actor.name }}</a> {% endfor %}</li>
+                        <li class="list-group-item"><b>Serial description:</b> {{ serial.description }}</li>
+                        <li class="list-group-item"><b>Number of seasons:</b> {{ serial.seasons|length }}</li>
+                    </ul>
+                </div>
+            </article>
+
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                    <ul class="list-group">
+                        <li class="list-group-item"><h3>List of seasons</h3></li>
+
+                        {% for season in serial.seasons %}
+                            <li class="list-group-item">
+                                <div>
+                                    <b>Number season:</b> <a href="{{ path('season_view_path', {'id' : season.id}) }}">{{ season.number }}</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    Serial "{{ serial.name }}"
+{% endblock %}

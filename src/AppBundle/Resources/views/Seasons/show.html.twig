@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12 thumbnail">
+                <div class="col-sm-12">
+                    <b>Number season:</b> {{ season.number }}
+                </div>
+
+                <div class="col-sm-12">
+                    <b>Date start season:</b> {{ season.dateStart|date('d-m-Y') }}
+                </div>
+
+                <div class="col-sm-12">
+                    <b>Date end season:</b> {{ season.dateEnd|date('d-m-Y') }}
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                    <ul class="list-group">
+                        <li class="list-group-item"><h3>List of episodes</h3></li>
+
+                        {% for episode in season.episodes %}
+                            <li class="list-group-item">
+                                <div>
+                                    <b>Name episode:</b> <a href="{{ path('episode_view_path', {'id' : episode.id}) }}">{{ episode.name }}</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+    {{ season.number }} season of serial "{{ season.serial.name }}"
+{% endblock %}

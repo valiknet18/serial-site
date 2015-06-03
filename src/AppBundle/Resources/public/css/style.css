@@ -27,3 +27,8 @@ stylize any heading tags withing white-panel below
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
+.content a.badge {
+    margin: 0px 2px;
+    float: none;
+}

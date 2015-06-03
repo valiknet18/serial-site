@@ -1,3 +1,15 @@
 root:
   path: /
   defaults: {_controller: AppBundle:Serials:index}
+
+serial_view_path:
+  path: /serials/{slug}/view
+  defaults: {_controller: AppBundle:Serials:show}
+
+season_view_path:
+  path: /seasons/{id}/view
+  defaults: {_controller: AppBundle:Seasons:show}
+
+episode_view_path:
+  path: /episodes/{id}/view
+  defaults: {_controller: AppBundle:Episodes:show}
