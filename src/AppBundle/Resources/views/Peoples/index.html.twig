@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            {% for people in peoples %}
+                <div class="col-lg-4 thumbnail">
+                    <h3>{{ people.name }} {{ people.surname }}</h3>
+
+                    <div>
+                        <a href="{{ path('people_view_path', {'slug' : people.slug}) }}" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

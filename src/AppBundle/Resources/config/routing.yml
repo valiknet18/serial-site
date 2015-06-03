@@ -13,3 +13,19 @@ season_view_path:
 episode_view_path:
   path: /episodes/{id}/view
   defaults: {_controller: AppBundle:Episodes:show}
+
+people_view_path:
+  path: /peoples/{slug}/view
+  defaults: {_controller: AppBundle:Peoples:show}
+
+people_list_path:
+  path: /peoples/list
+  defaults: {_controller: AppBundle:Peoples:index}
+
+genre_view_path:
+  path: /genres/{slug}/view
+  defaults: {_controller: AppBundle:Genres:show}
+
+genre_list_path:
+  path: /genres/list
+  defaults: {_controller: AppBundle:Genres:index}

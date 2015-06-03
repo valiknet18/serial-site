@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            {% for genre in genres %}
+                <div class="col-lg-4 thumbnail">
+                    <h3>{{ genre.name }}</h3>
+
+                    <div>
+                        <a href="{{ path('genre_view_path', {'slug' : genre.slug}) }}" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

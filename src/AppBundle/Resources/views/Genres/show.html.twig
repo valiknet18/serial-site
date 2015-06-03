@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-12 thumbnail">
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+                        <h3>{{ genre.name }}</h3>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+                        <h3>Serials this genre</h3>
+
+                        {% for serial in genre.serials %}
+                            <article class="col-sm-4 thumbnail">
+                                <div class="col-sm-12">
+                                    <img src="{{ serial.poster }}" />
+                                </div>
+
+                                <div class="col-sm-12 caption">
+                                    <a href="{{ path('serial_view_path', {'slug':serial.slug}) }}"><h4>{{ serial.name }}</h4></a>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

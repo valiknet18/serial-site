@@ -14,9 +14,9 @@
                         <li class="list-group-item"><b>Year:</b> {{ serial.releasedAt|date('d-m-Y') }} </li>
                         <li class="list-group-item"><b>Country:</b> {{ serial.country }} </li>
                         <li class="list-group-item"><b>City:</b> {{ serial.city }}</li>
-                        <li class="list-group-item"><b>Genres:</b> {% for genre in serial.genres %}<a href="" class="badge badge-info">{{ genre.name }}</a> {% endfor %}</li>
-                        <li class="list-group-item"><b>Directors:</b> {% for director in serial.directors %} <a href="" class="badge badge-info">{{ director.surname }} {{ director.name }}</a> {% endfor %}</li>
-                        <li class="list-group-item"><b>Actors:</b>{% for actor in serial.actors %}<a href="" class="badge badge-info">{{ actor.surname }} {{ actor.name }}</a> {% endfor %}</li>
+                        <li class="list-group-item"><b>Genres:</b> {% for genre in serial.genres %}<a href="{{ path('genre_view_path', {'slug' : genre.slug}) }}" class="badge badge-info">{{ genre.name }}</a> {% endfor %}</li>
+                        <li class="list-group-item"><b>Directors:</b> {% for director in serial.directors %} <a href="{{ path('people_view_path', {'slug' : director.slug}) }}" class="badge badge-info">{{ director.surname }} {{ director.name }}</a> {% endfor %}</li>
+                        <li class="list-group-item"><b>Actors:</b>{% for actor in serial.actors %}<a href="{{ path('people_view_path', {'slug' : actor.slug}) }}" class="badge badge-info">{{ actor.surname }} {{ actor.name }}</a> {% endfor %}</li>
                         <li class="list-group-item"><b>Serial description:</b> {{ serial.description }}</li>
                         <li class="list-group-item"><b>Number of seasons:</b> {{ serial.seasons|length }}</li>
                     </ul>

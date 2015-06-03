@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
 
-class PeoplesController extends Controller
+class GenresController extends Controller
 {
     /**
      * @Template
@@ -14,10 +14,10 @@ class PeoplesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $peoples = $em->getRepository('AppBundle:People')->findAll();
+        $genres = $em->getRepository('AppBundle:Genre')->findAll();
 
         return [
-            'peoples' => $peoples
+            'genres' => $genres
         ];
     }
 
@@ -31,10 +31,10 @@ class PeoplesController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $people = $em->getRepository('AppBundle:People')->findOneBySlug($slug);
+        $genre = $em->getRepository('AppBundle:Genre')->findOneBySlug($slug);
 
         return [
-            'people' => $people
+            'genre' => $genre
         ];
     }
 }
