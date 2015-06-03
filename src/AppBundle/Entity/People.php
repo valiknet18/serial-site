@@ -9,9 +9,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @package AppBundle\Entity
  *
  * @ORM\Entity
- * @ORM\Table(name="actors")
+ * @ORM\Table(name="peoples")
  */
-class Actor
+class People
 {
     /**
      * @var int
@@ -41,13 +41,22 @@ class Actor
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Serial", inversedBy="directors")
+     * @ORM\JoinTable(name="director_serial",
+     *                  joinColumns={@ORM\JoinColumn(name="director_id", referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="serial_id", referencedColumnName="id")}
+     * )
      */
     protected $director_serials;
 
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Serial", inversedBy="actors")
+     * @ORM\JoinTable(name="actor_serial",
+     *                  joinColumns={@ORM\JoinColumn(name="actor_id", referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="serial_id", referencedColumnName="id")}
+     * )
      */
     protected $actor_serials;
+
     /**
      * Constructor
      */

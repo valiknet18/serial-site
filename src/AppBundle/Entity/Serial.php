@@ -65,12 +65,20 @@ class Serial
     protected $city;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Actor", mappedBy="actor_serials")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\People", mappedBy="actor_serials")
+     * @ORM\JoinTable(name="actor_serial",
+     *                  joinColumns={@ORM\JoinColumn(name="serial_id", referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="actor_id", referencedColumnName="id")}
+     * )
      */
     protected $actors;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Actor", mappedBy="director_serials")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\People", mappedBy="director_serials")
+     * @ORM\JoinTable(name="director_serial",
+     *                  joinColumns={@ORM\JoinColumn(name="serial_id", referencedColumnName="id")},
+     *                  inverseJoinColumns={@ORM\JoinColumn(name="director_id", referencedColumnName="id")}
+     * )
      */
     protected $directors;
 
@@ -245,10 +253,10 @@ class Serial
     /**
      * Add actors
      *
-     * @param \AppBundle\Entity\Actor $actors
+     * @param \AppBundle\Entity\People $people
      * @return Serial
      */
-    public function addActor(\AppBundle\Entity\Actor $actors)
+    public function addActor(\AppBundle\Entity\People $actors)
     {
         $this->actors[] = $actors;
 
@@ -258,9 +266,9 @@ class Serial
     /**
      * Remove actors
      *
-     * @param \AppBundle\Entity\Actor $actors
+     * @param \AppBundle\Entity\People $actors
      */
-    public function removeActor(\AppBundle\Entity\Actor $actors)
+    public function removeActor(\AppBundle\Entity\People $actors)
     {
         $this->actors->removeElement($actors);
     }
@@ -281,7 +289,7 @@ class Serial
      * @param \AppBundle\Entity\Actor $directors
      * @return Serial
      */
-    public function addDirector(\AppBundle\Entity\Actor $directors)
+    public function addDirector(\AppBundle\Entity\People $directors)
     {
         $this->directors[] = $directors;
 
@@ -291,9 +299,9 @@ class Serial
     /**
      * Remove directors
      *
-     * @param \AppBundle\Entity\Actor $directors
+     * @param \AppBundle\Entity\People $directors
      */
-    public function removeDirector(\AppBundle\Entity\Actor $directors)
+    public function removeDirector(\AppBundle\Entity\People $directors)
     {
         $this->directors->removeElement($directors);
     }
