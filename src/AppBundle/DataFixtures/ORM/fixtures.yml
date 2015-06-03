@@ -1,0 +1,35 @@
+AppBundle\Entity\People:
+  peoples{1..50}:
+    name: <firstName()>
+    surname: <lastName()>
+
+AppBundle\Entity\Genre:
+  genres{1..50}:
+    name: <word()>
+
+AppBundle\Entity\Serial:
+  serials{1..20}:
+    name: <word()>
+    poster: <imageUrl()>
+    description: <text()>
+    releasedAt: <dateTimeBetween('-30 years', 'now')>
+    country: <country()>
+    city: <city()>
+    genres: 3x @genres*
+    actors: 5x @peoples*
+    directors: 3x @peoples*
+
+AppBundle\Entity\Season:
+  seasons{1.40}:
+    number: <randomDigit()>
+    date_start: <dateTimeBetween('-6 month', 'now')>
+    date_end: <dateTimeBetween('now', '+6 month')>
+    serial: @serials*
+
+AppBundle\Entity\Episode:
+  episodes{1..300}:
+    name: <word()>
+    poster: <imageUrl()>
+    description: <text()>
+    time: 42
+    releasedAt: <dateTimeBetween('-30 years', 'now')>
