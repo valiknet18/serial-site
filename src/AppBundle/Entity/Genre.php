@@ -54,7 +54,7 @@ class Genre
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -64,7 +64,7 @@ class Genre
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Genre
      */
     public function setName($name)
@@ -77,7 +77,7 @@ class Genre
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -87,7 +87,7 @@ class Genre
     /**
      * Add serials
      *
-     * @param \AppBundle\Entity\Serial $serials
+     * @param  \AppBundle\Entity\Serial $serials
      * @return Genre
      */
     public function addSerial(\AppBundle\Entity\Serial $serials)
@@ -110,7 +110,7 @@ class Genre
     /**
      * Get serials
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSerials()
     {
