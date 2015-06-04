@@ -1,0 +1,47 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <form action="{{ path('admin_episode_edit_path', {'id' : id}) }}" method="POST" {{ form_enctype(form) }}>
+                    <div>
+                        {{ form_label(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.poster) }}
+                        {{ form_widget(form.poster) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.description) }}
+                        {{ form_widget(form.description) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.releasedAt) }}
+                        {{ form_widget(form.releasedAt) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.time) }}
+                        {{ form_widget(form.time) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.season) }}
+                        {{ form_widget(form.season) }}
+                    </div>
+
+                    <div>
+                        <button class="btn btn-success" type="submit">Create</button>
+                    </div>
+
+                    {{ form_rest(form) }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

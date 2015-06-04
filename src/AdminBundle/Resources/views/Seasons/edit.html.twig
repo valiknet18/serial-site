@@ -1,0 +1,37 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <form action="{{ path('admin_season_edit_path', {'id' : id}) }}" method="POST">
+                    <div>
+                        {{ form_label(form.number) }}
+                        {{ form_widget(form.number) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.date_start) }}
+                        {{ form_widget(form.date_start) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.date_end) }}
+                        {{ form_widget(form.date_end) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(form.serial) }}
+                        {{ form_widget(form.serial) }}
+                    </div>
+
+                    <div>
+                        <button class="btn btn-success" type="submit">Create</button>
+                    </div>
+
+                    {{ form_rest(form) }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

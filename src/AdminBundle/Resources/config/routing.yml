@@ -14,9 +14,25 @@ admin_season_list_path:
   path: /admin/seasons/
   defaults: {_controller: AdminBundle:Seasons:index}
 
+admin_season_create_path:
+  path: /admin/seasons/create
+  defaults: {_controller: AdminBundle:Seasons:create}
+
+admin_season_edit_path:
+  path: /admin/seasons/{id}/edit
+  defaults: {_controller: AdminBundle:Seasons:edit}
+
 admin_episode_list_path:
   path: /admin/episodes/
   defaults: {_controller: AdminBundle:Episodes:index}
+
+admin_episode_create_path:
+  path: /admin/episodes/create
+  defaults: {_controller: AdminBundle:Episodes:create}
+
+admin_episode_edit_path:
+  path: /admin/episodes/{id}/edit
+  defaults: {_controller: AdminBundle:Episodes:edit}
 
 admin_people_list_path:
   path: /admin/peoples/
