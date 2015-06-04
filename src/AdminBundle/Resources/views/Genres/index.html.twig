@@ -1,0 +1,23 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-2 pull-right">
+                    <a href="{{ path('admin_genre_create_path') }}" class="btn btn-success">Create genre</a>
+                </div>
+            </div>
+            {% for genre in genres %}
+                <div class="col-lg-4 thumbnail">
+                    <h3>{{ genre.name }}</h3>
+
+                    <div>
+                        <a href="{{ path('admin_genre_edit_path', {'slug' : genre.slug}) }}" class="btn btn-primary">Update</a>
+                        <a href="{{ path('genre_view_path', {'slug' : genre.slug}) }}" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

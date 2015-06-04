@@ -1,0 +1,23 @@
+{% extends '::admin.html.twig' %}
+
+{% block body %}
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-2 pull-right">
+                    <a href="{{ path('admin_people_create_path') }}" class="btn btn-success">Create people</a>
+                </div>
+            </div>
+            {% for people in peoples %}
+                <div class="col-lg-4 thumbnail">
+                    <h3>{{ people.name }} {{ people.surname }}</h3>
+
+                    <div>
+                        <a href="{{ path('admin_people_edit_path', {'slug' : people.slug}) }}" class="btn btn-primary">Update</a>
+                        <a href="{{ path('people_view_path', {'slug' : people.slug}) }}" class="btn btn-primary">Delete</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
