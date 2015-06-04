@@ -2,6 +2,14 @@ admin_root:
   path: /admin/
   defaults: {_controller: AdminBundle:Serials:index}
 
+admin_serial_create_path:
+  path: /admin/serials/create
+  defaults: {_controller: AdminBundle:Serials:create}
+
+admin_serial_edit_path:
+  path: /admin/serials/{slug}/edit
+  defaults: {_controller: AdminBundle:Serials:edit}
+
 admin_season_list_path:
   path: /admin/seasons/
   defaults: {_controller: AdminBundle:Seasons:index}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link href="{{ asset('/bundles/app/css/bootstrap/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('/bundles/app/css/style.css') }}" rel="stylesheet"/>
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <span class="navbar-brand">
+                        Admin area
+                    </span>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{{ path('admin_root') }}">
+                            <div>
+                                Home
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_season_list_path') }}">
+                            <div>
+                                Seasons
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_episode_list_path') }}">
+                            <div>
+                                Episodes
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_people_list_path') }}">
+                            <div>
+                                Peoples
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_genre_list_path') }}">
+                            <div>
+                                Genres
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            {% block body %}{% endblock %}
+        </div>
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="{{ asset('/bundles/app/js/app.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -5,21 +5,21 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="col-sm-2 pull-right">
-                    <a href="" class="btn btn-success">Create serial</a>
+                    <a href="{{ path('admin_serial_create_path') }}" class="btn btn-success">Create serial</a>
                 </div>
             </div>
             {% for serial in pagination %}
                 <article class="col-sm-4 thumbnail">
                     <div class="col-sm-12">
-                        <img src="{{ serial.poster }}" />
+                        <img src="{{ serial.absolutePath }}" />
                     </div>
 
                     <div class="col-sm-12 caption">
-                        <a href="{{ path('serial_view_path', {'slug':serial.slug}) }}"><h4>{{ serial.name }}</h4></a>
+                        <a href="{{ path('serial_view_path', {'slug' : serial.slug}) }}"><h4>{{ serial.name }}</h4></a>
                     </div>
 
                     <div class="col-sm-12">
-                        <a href="" class="btn btn-primary">Update</a>
+                        <a href="{{ path('admin_serial_edit_path', {'slug' : serial.slug}) }}" class="btn btn-primary">Update</a>
                         <a href="" class="btn btn-primary">Delete</a>
                     </div>
                 </article>

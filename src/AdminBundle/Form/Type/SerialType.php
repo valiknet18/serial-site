@@ -12,7 +12,9 @@ class SerialType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('poster')
+            ->add('poster', 'file', [
+                'required' => false
+            ])
             ->add('description')
             ->add('releasedAt')
             ->add('country')
