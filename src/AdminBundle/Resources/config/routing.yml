@@ -1,0 +1,35 @@
+admin_root:
+  path: /admin/
+  defaults: {_controller: AdminBundle:Serials:index}
+
+admin_season_list_path:
+  path: /admin/seasons/
+  defaults: {_controller: AdminBundle:Seasons:index}
+
+admin_episode_list_path:
+  path: /admin/episodes/
+  defaults: {_controller: AdminBundle:Episodes:index}
+
+admin_people_list_path:
+  path: /admin/peoples/
+  defaults: {_controller: AdminBundle:Peoples:index}
+
+admin_people_create_path:
+  path: /admin/peoples/create
+  defaults: {_controller: AdminBundle:Peoples:create}
+
+admin_people_edit_path:
+  path: /admin/peoples/{slug}/edit
+  defaults: {_controller: AdminBundle:Peoples:edit}
+
+admin_genre_list_path:
+  path: /admin/genres/
+  defaults: {_controller: AdminBundle:Genres:index}
+
+admin_genre_create_path:
+  path: /admin/genres/create
+  defaults: {_controller: AdminBundle:Genres:create}
+
+admin_genre_edit_path:
+  path: /admin/genres/{slug}/edit
+  defaults: {_controller: AdminBundle:Genres:edit}
