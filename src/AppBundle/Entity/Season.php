@@ -195,4 +195,9 @@ class Season
     {
         return $this->episodes;
     }
+
+    public function __toString()
+    {
+        return $this->number.' season of serial '.$this->serial->getName();
+    }
 }

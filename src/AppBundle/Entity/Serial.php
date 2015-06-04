@@ -535,4 +535,9 @@ class Serial
     {
         return $this->path;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
