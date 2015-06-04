@@ -3,17 +3,24 @@
 {% block body %}
     <div class="content">
         <div class="row">
+            <div class="col-sm-12">
+                <a href="{{ path('admin_episode_create_path') }}" class="btn btn-success pull-right">Create</a>
+            </div>
             {% for episode in episodes %}
                 <div class="col-lg-4 thumbnail">
                     <h4>{{ episode.name }}</h4>
                     <span>{{ episode.season.number }} season of serial "{{ episode.season.serial.name }}"</span>
 
                     <div>
-                        <a href="" class="btn btn-primary">Update</a>
+                        <a href="{{ path('admin_episode_edit_path', {'id' : episode.id}) }}" class="btn btn-primary">Update</a>
                         <a href="" class="btn btn-primary">Delete</a>
                     </div>
                 </div>
             {% endfor %}
+        </div>
+
+        <div class="navigation col-sm-12">
+            {{ knp_pagination_render(episodes   ) }}
         </div>
     </div>
 {% endblock %}

@@ -6,7 +6,7 @@
             {% for serial in pagination %}
                 <article class="col-sm-4 thumbnail">
                     <div class="col-sm-12">
-                        <img src="{{ serial.poster }}" />
+                        <img src="{{ serial.absolutePath }}" />
                     </div>
 
                     <div class="col-sm-12 caption">
@@ -15,7 +15,8 @@
                 </article>
             {% endfor %}
 
-            <div class="navigation">
+            <div class="navigation col-sm-12">
+                {{ knp_pagination_render(pagination) }}
             </div>
         </div>
     </div>

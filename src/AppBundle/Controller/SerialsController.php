@@ -17,6 +17,13 @@ class SerialsController extends Controller
 
         $serials = $em->getRepository('AppBundle:Serial')->findAll();
 
+        $paginator  = $this->get('knp_paginator');
+        $serials = $paginator->paginate(
+            $serials,
+            $request->query->getInt('page', 1),
+            12
+        );
+
         return [
             'pagination' => $serials
         ];
