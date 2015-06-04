@@ -36,11 +36,7 @@ class GenreControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/admin/genres/nisi/edit/');
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-
-        $crawler = $client->request('GET', '/admin/genres/nisi/edit/'.md5(rand(1,100)));
+        $crawler = $client->request('GET', '/admin/genres/accusamus/edit/'.md5(rand(1,100)));
 
         $this->assertEquals(404, $client->getResponse()->getStatusCode());
     }
