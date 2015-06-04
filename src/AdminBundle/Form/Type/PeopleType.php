@@ -28,4 +28,3 @@ class PeopleType extends AbstractType
         return 'people_type';
     }
 }
-

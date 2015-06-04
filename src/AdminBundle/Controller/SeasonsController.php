@@ -37,7 +37,7 @@ class SeasonsController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request $request
      * @return array
      *
      * @Template
@@ -64,7 +64,7 @@ class SeasonsController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request                                                  $request
      * @param $slug
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      *

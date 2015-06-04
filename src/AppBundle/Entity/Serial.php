@@ -519,7 +519,7 @@ class Serial
     /**
      * Set path
      *
-     * @param string $path
+     * @param  string $path
      * @return Serial
      */
     public function setPath($path)
@@ -532,7 +532,7 @@ class Serial
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {

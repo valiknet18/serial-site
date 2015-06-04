@@ -3,9 +3,7 @@
 namespace AdminBundle\Controller;
 
 use AdminBundle\Form\Type\GenreType;
-use AdminBundle\Form\Type\PeopleType;
 use AppBundle\Entity\Genre;
-use AppBundle\Entity\People;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,7 +33,7 @@ class GenresController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request $request
      * @return array
      *
      * @Template
@@ -62,7 +60,7 @@ class GenresController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param  Request                                                  $request
      * @param $slug
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      *

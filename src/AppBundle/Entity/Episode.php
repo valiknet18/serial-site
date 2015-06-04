@@ -214,7 +214,7 @@ class Episode
     /**
      * Set path
      *
-     * @param string $path
+     * @param  string  $path
      * @return Episode
      */
     public function setPath($path)
@@ -227,7 +227,7 @@ class Episode
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
