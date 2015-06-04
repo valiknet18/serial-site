@@ -3,3 +3,6 @@ fos_js_routing:
 
 app:
     resource: "@AppBundle/Resources/config/routing.yml"
+
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
