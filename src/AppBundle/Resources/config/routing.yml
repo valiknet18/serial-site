@@ -19,7 +19,7 @@ people_view_path:
   defaults: {_controller: AppBundle:Peoples:show}
 
 people_list_path:
-  path: /peoples/list
+  path: /peoples/
   defaults: {_controller: AppBundle:Peoples:index}
 
 genre_view_path:
@@ -27,5 +27,5 @@ genre_view_path:
   defaults: {_controller: AppBundle:Genres:show}
 
 genre_list_path:
-  path: /genres/list
+  path: /genres/
   defaults: {_controller: AppBundle:Genres:index}
