@@ -6,6 +6,7 @@ use AdminBundle\Form\Type\SerialType;
 use AppBundle\Entity\Serial;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class SerialsController extends Controller
@@ -124,5 +125,17 @@ class SerialsController extends Controller
             'slug' => $slug,
             'form' => $form->createView()
         ];
+    }
+
+    public function deleteAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $serial = $em->getRepository('AppBundle:Serial')->findOneBySlug($slug);
+
+        $em->remove($serial);
+        $em->flush();
+
+        return new JsonResponse();
     }
 }

@@ -14,7 +14,7 @@
 
                     <div>
                         <a href="{{ path('admin_people_edit_path', {'slug' : people.slug}) }}" class="btn btn-primary">Update</a>
-                        <a href="{{ path('people_view_path', {'slug' : people.slug}) }}" class="btn btn-primary">Delete</a>
+                        <a href="{{ path('admin_people_delete_path', {'slug' : people.slug}) }}" class="btn btn-primary delete-row">Delete</a>
                     </div>
                 </div>
             {% endfor %}

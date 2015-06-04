@@ -5,6 +5,7 @@ namespace AdminBundle\Controller;
 use AdminBundle\Form\Type\SeasonType;
 use AppBundle\Entity\Season;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
 
@@ -88,5 +89,17 @@ class SeasonsController extends Controller
             'id' => $id,
             'form' => $form->createView()
         ];
+    }
+
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $season = $em->getRepository('AppBundle:Season')->findOneById($id);
+
+        $em->remove($season);
+        $em->flush();
+
+        return new JsonResponse();
     }
 }

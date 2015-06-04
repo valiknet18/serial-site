@@ -13,7 +13,7 @@
 
                     <div>
                         <a href="{{ path('admin_episode_edit_path', {'id' : episode.id}) }}" class="btn btn-primary">Update</a>
-                        <a href="" class="btn btn-primary">Delete</a>
+                        <a href="{{ path('admin_episode_delete_path', {'id' : episode.id}) }}" class="btn btn-primary delete-row">Delete</a>
                     </div>
                 </div>
             {% endfor %}

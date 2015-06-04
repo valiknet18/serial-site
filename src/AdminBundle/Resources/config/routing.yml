@@ -10,6 +10,10 @@ admin_serial_edit_path:
   path: /admin/serials/{slug}/edit
   defaults: {_controller: AdminBundle:Serials:edit}
 
+admin_serial_delete_path:
+  path: /admin/serials/{slug}/delete
+  defaults: {_controller: AdminBundle:Serials:delete}
+
 admin_season_list_path:
   path: /admin/seasons/
   defaults: {_controller: AdminBundle:Seasons:index}
@@ -21,6 +25,10 @@ admin_season_create_path:
 admin_season_edit_path:
   path: /admin/seasons/{id}/edit
   defaults: {_controller: AdminBundle:Seasons:edit}
+
+admin_season_delete_path:
+  path: /admin/seasons/{id}/delete
+  defaults: {_controller: AdminBundle:Seasons:delete}
 
 admin_episode_list_path:
   path: /admin/episodes/
@@ -34,6 +42,10 @@ admin_episode_edit_path:
   path: /admin/episodes/{id}/edit
   defaults: {_controller: AdminBundle:Episodes:edit}
 
+admin_episode_delete_path:
+  path: /admin/episodes/{id}/delete
+  defaults: {_controller: AdminBundle:Episodes:delete}
+
 admin_people_list_path:
   path: /admin/peoples/
   defaults: {_controller: AdminBundle:Peoples:index}
@@ -46,6 +58,10 @@ admin_people_edit_path:
   path: /admin/peoples/{slug}/edit
   defaults: {_controller: AdminBundle:Peoples:edit}
 
+admin_people_delete_path:
+  path: /admin/peoples/{slug}/delete
+  defaults: {_controller: AdminBundle:Peoples:delete}
+
 admin_genre_list_path:
   path: /admin/genres/
   defaults: {_controller: AdminBundle:Genres:index}
@@ -57,3 +73,7 @@ admin_genre_create_path:
 admin_genre_edit_path:
   path: /admin/genres/{slug}/edit
   defaults: {_controller: AdminBundle:Genres:edit}
+
+admin_genre_delete_path:
+  path: /admin/genres/{slug}/delete
+  defaults: {_controller: AdminBundle:Genres:delete}

@@ -8,6 +8,7 @@ use AppBundle\Entity\Genre;
 use AppBundle\Entity\People;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class GenresController extends Controller
@@ -86,5 +87,17 @@ class GenresController extends Controller
             'slug' => $slug,
             'form' => $form->createView()
         ];
+    }
+
+    public function deleteAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $genre = $em->getRepository('AppBundle:Genre')->findOneBySlug($slug);
+
+        $em->remove($genre);
+        $em->flush();
+
+        return new JsonResponse();
     }
 }

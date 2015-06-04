@@ -6,6 +6,7 @@ use AdminBundle\Form\Type\EpisodeType;
 use AppBundle\Entity\Episode;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class EpisodesController extends Controller
@@ -88,5 +89,17 @@ class EpisodesController extends Controller
             'id' => $id,
             'form' => $form->createView()
         ];
+    }
+
+    public function deleteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $episode = $em->getRepository('AppBundle:Episode')->findOneById($id);
+
+        $em->remove($episode);
+        $em->flush();
+
+        return new JsonResponse();
     }
 }

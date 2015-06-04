@@ -6,6 +6,7 @@ use AdminBundle\Form\Type\PeopleType;
 use AppBundle\Entity\People;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class PeoplesController extends Controller
@@ -86,5 +87,17 @@ class PeoplesController extends Controller
             'slug' => $slug,
             'form' => $form->createView()
         ];
+    }
+
+    public function deleteAction(Request $request, $slug)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $people = $em->getRepository('AppBundle:People')->findOneBySlug($slug);
+
+        $em->remove($people);
+        $em->flush();
+
+        return new JsonResponse();
     }
 }
