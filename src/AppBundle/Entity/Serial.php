@@ -102,7 +102,7 @@ class Serial
     protected $genres;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Season", mappedBy="serial")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Season", mappedBy="serial", cascade={"remove"})
      */
     protected $seasons;
 
@@ -508,7 +508,10 @@ class Serial
     public function removeUpload()
     {
         $file = $this->getAbsolutePath();
-        if ($file) {
+
+        if (strstr($this->path, 'http://') || strpos($this->path, 'https://')) {
+            return ;
+        } else {
             unlink($file);
         }
     }

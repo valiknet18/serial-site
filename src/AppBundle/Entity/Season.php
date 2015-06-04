@@ -49,7 +49,7 @@ class Season
     protected $serial;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Episode", mappedBy="season")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Episode", mappedBy="season", cascade={"remove"})
      */
     protected $episodes;
 

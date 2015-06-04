@@ -320,7 +320,10 @@ class Episode
     public function removeUpload()
     {
         $file = $this->getAbsolutePath();
-        if ($file) {
+
+        if (strstr($this->path, 'http://') || strpos($this->path, 'https://')) {
+            return ;
+        } else {
             unlink($file);
         }
     }
