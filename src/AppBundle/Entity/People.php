@@ -237,4 +237,9 @@ class People
     {
         return $this->actor_serials;
     }
+
+    public function __toString()
+    {
+        return $this->surname . " " . $this->name;
+    }
 }

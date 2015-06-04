@@ -34,6 +34,8 @@ class Episode
      *
      * @ORM\Column(type="string")
      */
+    protected $path;
+
     protected $poster;
 
     /**
@@ -206,5 +208,28 @@ class Episode
     public function getSeason()
     {
         return $this->season;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Episode
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }

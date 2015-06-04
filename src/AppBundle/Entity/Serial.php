@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Class Serial
@@ -11,6 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  *
  * @ORM\Entity
  * @ORM\Table(name="serials")
+ * @ORM\HasLifecycleCallbacks
  */
 class Serial
 {
@@ -24,9 +26,12 @@ class Serial
     protected $id;
 
     /**
-     * @var string
-     *
      * @ORM\Column(type="string", nullable=true)
+     */
+    protected $path;
+
+    /**
+     * @var string
      */
     protected $poster;
 
@@ -130,7 +135,7 @@ class Serial
      * @param  string $poster
      * @return Serial
      */
-    public function setPoster($poster)
+    public function setPoster(UploadedFile $poster = null)
     {
         $this->poster = $poster;
 
@@ -294,7 +299,6 @@ class Serial
     public function addActor(\AppBundle\Entity\People $actors)
     {
         $this->actors[] = $actors;
-        $actors->addActorSerial($this);
 
         return $this;
     }
@@ -307,7 +311,6 @@ class Serial
     public function removeActor(\AppBundle\Entity\People $actors)
     {
         $this->actors->removeElement($actors);
-        $actors->removeActorSerial($this);
     }
 
     /**
@@ -329,7 +332,6 @@ class Serial
     public function addDirector(\AppBundle\Entity\People $directors)
     {
         $this->directors[] = $directors;
-        $directors->addDirectorSerial($this);
 
         return $this;
     }
@@ -342,7 +344,6 @@ class Serial
     public function removeDirector(\AppBundle\Entity\People $directors)
     {
         $this->directors->removeElement($directors);
-        $directors->removeDirectorSerial($this);
     }
 
     /**
@@ -364,7 +365,6 @@ class Serial
     public function addGenre(\AppBundle\Entity\Genre $genres)
     {
         $this->genres[] = $genres;
-        $genres->addSerial($this);
 
         return $this;
     }
@@ -377,7 +377,6 @@ class Serial
     public function removeGenre(\AppBundle\Entity\Genre $genres)
     {
         $this->genres->removeElement($genres);
-        $genres->removeSerial($this);
     }
 
     /**
@@ -428,9 +427,13 @@ class Serial
      */
     public function getAbsolutePath()
     {
-        return null === $this->poster
+        if (strstr($this->path, 'http://') || strpos($this->path, 'https://')) {
+            return $this->path;
+        }
+
+        return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->poster;
+            : '/'.$this->getUploadDir().'/'.$this->path;
     }
 
     /**
@@ -438,9 +441,9 @@ class Serial
      */
     public function getWebPath()
     {
-        return null === $this->poster
+        return null === $this->path
             ? null
-            : $this->getUploadDir().'/'.$this->poster;
+            : $this->getUploadDir().'/'.$this->path;
     }
 
     /**
@@ -450,7 +453,7 @@ class Serial
     {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
     }
 
     /**
@@ -472,7 +475,7 @@ class Serial
         if (null !== $this->getPoster()) {
             // do whatever you want to generate a unique name
             $filename = sha1(uniqid(mt_rand(), true));
-            $this->poster = $filename.'.'.$this->getPoster()->guessExtension();
+            $this->path = $filename.'.'.$this->getPoster()->guessExtension();
         }
     }
 
@@ -488,7 +491,7 @@ class Serial
         // if there is an error when moving the file, an exception will
         // be automatically thrown by move(). This will properly prevent
         // the entity from being persisted to the database on error
-        $this->getPoster()->move($this->getUploadRootDir(), $this->poster);
+        $this->getPoster()->move($this->getUploadRootDir(), $this->path);
         // check if we have an old image
         if (isset($this->temporary)) {
             // delete the old image
@@ -508,5 +511,28 @@ class Serial
         if ($file) {
             unlink($file);
         }
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Serial
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }
