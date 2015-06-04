@@ -26,7 +26,7 @@ class Serial
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $poster;
 
@@ -100,6 +100,8 @@ class Serial
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Season", mappedBy="serial")
      */
     protected $seasons;
+
+    protected $temporary;
 
     /**
      * Constructor
@@ -419,5 +421,92 @@ class Serial
     public function getSeasons()
     {
         return $this->seasons;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->poster
+            ? null
+            : $this->getUploadRootDir().'/'.$this->poster;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->poster
+            ? null
+            : $this->getUploadDir().'/'.$this->poster;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/serials';
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->getPoster()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->poster = $filename.'.'.$this->getPoster()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->getPoster()) {
+            return;
+        }
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getPoster()->move($this->getUploadRootDir(), $this->poster);
+        // check if we have an old image
+        if (isset($this->temporary)) {
+            // delete the old image
+            unlink($this->getUploadRootDir().'/'.$this->temporary);
+            // clear the temp image path
+            $this->temporary = null;
+        }
+        $this->poster = null;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        $file = $this->getAbsolutePath();
+        if ($file) {
+            unlink($file);
+        }
     }
 }
