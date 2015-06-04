@@ -12,7 +12,7 @@ class EpisodeType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('poster')
+            ->add('poster', 'file', ['required' => false])
             ->add('releasedAt')
             ->add('description')
             ->add('time')
@@ -23,7 +23,7 @@ class EpisodeType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Serial'
+            'data_class' => 'AppBundle\Entity\Episode'
         ));
     }
 

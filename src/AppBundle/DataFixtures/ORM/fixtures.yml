@@ -10,7 +10,7 @@ AppBundle\Entity\Genre:
 AppBundle\Entity\Serial:
   serials{1..20}:
     name: <word()>
-    poster: <imageUrl(340, 200)>
+    path: <imageUrl(340, 200)>
     description: <text()>
     releasedAt: <dateTimeBetween('-30 years', 'now')>
     country: <country()>
@@ -29,7 +29,7 @@ AppBundle\Entity\Season:
 AppBundle\Entity\Episode:
   episodes{1..300}:
     name: <word()>
-    poster: <imageUrl(340, 200)>
+    path: <imageUrl(340, 200)>
     description: <text()>
     time: 42
     releasedAt: <dateTimeBetween('-30 years', 'now')>
